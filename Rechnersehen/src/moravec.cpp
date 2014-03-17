@@ -45,18 +45,18 @@ int moravec::mor(int x, int y, QImage &img, int k){
 			continue;
 
 		if (x + i + 1 < img.width())
-			s_x = qGray(img.pixel(x + i + 1, y + j)) - min_value;
+			s_x += qGray(img.pixel(x + i + 1, y + j)) - min_value;
 
 		if (y + j + 1 < img.height())
-			s_y = qGray(img.pixel(x + i, y + j + 1)) - min_value;
+			s_y += qGray(img.pixel(x + i, y + j + 1)) - min_value;
 
 		if (x + i + 1 < img.width()
 			&& y + j + 1 < img.height())
-			s_d1 = qGray(img.pixel(x + i + 1, y + j + 1)) - min_value;
+			s_d1 += qGray(img.pixel(x + i + 1, y + j + 1)) - min_value;
 		
 		if (y + j - 1 >= 0
 			&& x + i + 1 < img.width())
-			s_d2 = qGray(img.pixel(x + i + 1, y + j - 1)) - min_value;
+			s_d2 += qGray(img.pixel(x + i + 1, y + j - 1)) - min_value;
 	}
 
 
