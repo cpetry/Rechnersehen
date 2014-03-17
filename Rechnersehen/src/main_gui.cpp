@@ -82,7 +82,6 @@ void main_GUI::slot_editingFilenameFinished(){
 void main_GUI::slot_load(){
 	this->ui.btn_start->setEnabled(true);
 	QPixmap pic(ui.lineEdit_filename->text());
-	QImage picimg = pic.toImage();
 
 	// make image gray!
 	/*for (int y = 0; y < picimg.height(); y++)
@@ -90,7 +89,7 @@ void main_GUI::slot_load(){
 	int gray = qGray(picimg.pixel(x, y));
 	picimg.setPixel(x, y, qRgb(gray, gray, gray));
 	}*/
-	left_pixmap = QPixmap::fromImage(picimg).scaled(256, 256);
+	left_pixmap = pic.scaled(256, 256);
 	ui.lbl_leftPic->setPixmap(left_pixmap);
 }
 
