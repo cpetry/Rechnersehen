@@ -12,6 +12,7 @@
 #include <QtCore\QDebug>
 
 #include "moravec.h"
+#include "tomasikanade.h"
 
 main_GUI::main_GUI(){
 	// Loads the ui_GUI.ui file and set it to the UI
@@ -19,7 +20,7 @@ main_GUI::main_GUI(){
 
 	this->ui.cmb_punktdet->addItem("Moravec");
 	//this->ui.cmb_punktdet->addItem("Harris Corner");
-	//this->ui.cmb_punktdet->addItem("Tomasi & Kanade");
+	this->ui.cmb_punktdet->addItem("Tomasi & Kanade");
 	
 
 	// Sets the window title
@@ -95,8 +96,14 @@ void main_GUI::slot_load(){
 
 void main_GUI::slot_start(){
 	ui.statusBar->showMessage("Running...");
-	
-	QImage img = moravec::getInterestPoints(left_pixmap.toImage(), ui.spinBox_threshold->value(), ui.spinBox_windowsize->value());
+	QImage img;
+
+	bool graypic = ui.cbx_graypic->isChecked();
+
+	if (ui.cmb_punktdet->currentText() == QString("Moravec"))
+		img = moravec::getInterestPoints(left_pixmap.toImage(), ui.spinBox_threshold->value(), ui.spinBox_windowsize->value(), graypic);
+	else if (ui.cmb_punktdet->currentText() == QString("Tomasi & Kanade"))
+		img = tomasikanade::getInterestPoints(left_pixmap.toImage(), ui.spinBox_threshold->value(), ui.spinBox_windowsize->value(), graypic);
 
 	ui.lbl_rightPic->setPixmap(QPixmap::fromImage(img).scaled(256, 256));
 	//img.pixel();

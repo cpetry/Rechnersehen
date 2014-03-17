@@ -1,8 +1,11 @@
 #include "moravec.h"
+
 #include <algorithm>    // std::min
 #include <QtGui/QRgb>
 
-QImage moravec::getInterestPoints(QImage src, int threshold, int window_size){
+#include "display.h"
+
+QImage moravec::getInterestPoints(QImage src, int threshold, int window_size, bool showgraypic){
 	QImage result = src.copy();
 
 	// window size has to be greater or equal than 1!
@@ -10,17 +13,15 @@ QImage moravec::getInterestPoints(QImage src, int threshold, int window_size){
 		return result;
 
 	int value = 0;
+
 	for (int y = 0; y < src.height(); y++)
 	for (int x = 0; x < src.width(); x++){
 		value = mor(x, y, src, window_size);
-		if (value > threshold){
-
-			// draw little red cross
-			result.setPixel(x, y, qRgb(255, 0, 0));
-			result.setPixel(std::max(x - 1, 0), y, qRgb(255, 0, 0));				//left
-			result.setPixel(std::min(x + 1, src.width() - 1), y, qRgb(255, 0, 0));	//right
-			result.setPixel(x, std::min(y + 1, src.height() - 1), qRgb(255, 0, 0));	//top
-			result.setPixel(x, std::max(y - 1, 0), qRgb(255, 0, 0));				//bottom
+		if (!showgraypic && value > threshold){
+			display::drawcross(x, y, result);
+		}
+		else if (showgraypic){
+			display::drawgraypic(x, y, value, 2, result);
 		}
 	}
 	return result;

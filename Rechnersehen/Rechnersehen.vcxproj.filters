@@ -27,6 +27,9 @@
     <ClCompile Include="src\moravec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tomasikanade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\main_gui.h">
@@ -36,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\moravec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\tomasikanade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

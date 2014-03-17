@@ -118,6 +118,7 @@
     <ClCompile Include="src\main_gui.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\moravec.cpp" />
+    <ClCompile Include="src\tomasikanade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="main_GUI.ui">
@@ -137,8 +138,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\display.h" />
     <ClInclude Include="header\main_gui.h" />
     <ClInclude Include="header\moravec.h" />
+    <ClInclude Include="header\tomasikanade.h" />
     <ClInclude Include="ui_main_GUI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -120,6 +120,13 @@
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="QCheckBox" name="cbx_graypic">
+               <property name="text">
+                <string>Graypic</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
            <item>
